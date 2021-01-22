@@ -1,0 +1,52 @@
+<%= form_with(model: operation, local: true) do |form| %>
+  <% if operation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(operation.errors.count, "error") %> prohibited this operation from being saved:</h2>
+
+      <ul>
+        <% operation.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :asset_id %>
+    <%= form.text_field :asset_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type %>
+    <%= form.text_field :type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tax %>
+    <%= form.text_field :tax %>
+  </div>
+
+  <div class="field">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :platform %>
+    <%= form.text_field :platform %>
+  </div>
+
+  <div class="field">
+    <%= form.label :operated_at %>
+    <%= form.datetime_select :operated_at %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  asset: one
+  type: 
+  tax: 9.99
+  quantity: 1
+  price: 9.99
+  platform: MyString
+  operated_at: 2021-01-22 22:08:44
+
+two:
+  asset: two
+  type: 
+  tax: 9.99
+  quantity: 1
+  price: 9.99
+  platform: MyString
+  operated_at: 2021-01-22 22:08:44

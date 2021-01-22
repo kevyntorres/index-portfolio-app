@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Operations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Asset</th>
+      <th>Type</th>
+      <th>Tax</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Platform</th>
+      <th>Operated at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @operations.each do |operation| %>
+      <tr>
+        <td><%= operation.asset_id %></td>
+        <td><%= operation.type %></td>
+        <td><%= operation.tax %></td>
+        <td><%= operation.quantity %></td>
+        <td><%= operation.price %></td>
+        <td><%= operation.platform %></td>
+        <td><%= operation.operated_at %></td>
+        <td><%= link_to 'Show', operation %></td>
+        <td><%= link_to 'Edit', edit_operation_path(operation) %></td>
+        <td><%= link_to 'Destroy', operation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Operation', new_operation_path %>
