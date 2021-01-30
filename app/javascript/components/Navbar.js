@@ -6,7 +6,7 @@ class Navbar extends React.Component {
 
     navItems(items) {
         return (
-            items.map(item => <Nav.Item value={item.name} icon={item.icon} to={item.to}/>)
+            items.map(item => <Nav.Item key={item.name} value={item.name} icon={item.icon} to={item.to}/>)
         )
 
     }

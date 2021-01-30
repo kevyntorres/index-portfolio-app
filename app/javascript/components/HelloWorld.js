@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Conditional from "./Conditional";
+import { Page } from "tabler-react";
 class HelloWorld extends React.Component {
   constructor() {
     super()
@@ -20,8 +21,10 @@ class HelloWorld extends React.Component {
   render () {
     return (
       <React.Fragment>
-        <h1> Greeting: {this.props.greeting} </h1>
-        <Conditional isLoading={this.state.isLoading} />
+        <Page.Content>
+          <h1> Greeting: {this.props.greeting} </h1>
+          <Conditional isLoading={this.state.isLoading} />
+        </Page.Content>
       </React.Fragment>
     );
   }
