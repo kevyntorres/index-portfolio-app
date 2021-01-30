@@ -1,4 +1,4 @@
-class OperationsController < ApplicationController
+class V1::OperationsController < ApplicationController
   before_action :set_operation, only: [:show, :edit, :update, :destroy]
 
   # GET /operations
