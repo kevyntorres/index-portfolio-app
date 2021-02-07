@@ -8,6 +8,7 @@ class AllItems extends React.Component {
     this.state = {
       data: []
     }
+    this.deleteItem = this.deleteItem.bind(this)
   }
   componentDidMount(){
     fetch('/v1/items')
@@ -19,9 +20,15 @@ class AllItems extends React.Component {
         });
   }
 
+    deleteItem(itemId){
+        this.setState((prevState)=>{
+            data: prevState.data.filter(item => item.id !== itemId)
+        })
+    }
+
     assetsItems(items) {
         return (
-            items.map(item=> <ListItem key={item.id} data={item} />)
+            items.map(item=> <ListItem key={item.id} data={item} deleteItem={this.deleteItem(item.id)}/>)
         )
     }
 
