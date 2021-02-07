@@ -35,7 +35,7 @@ class Navbar extends React.Component {
     ]
     return (
       <React.Fragment>
-        <Site.Header imageURL={'./assets/logo.jpeg'} />
+        <Site.Header imageURL={'/assets/logo.jpeg'} />
         <Site.Nav items={this.navItems(itemsMenu)}/>
       </React.Fragment>
     );

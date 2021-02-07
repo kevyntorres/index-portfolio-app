@@ -5,11 +5,13 @@ class V1::CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
+    render json: @categories
   end
 
   # GET /categories/1
   # GET /categories/1.json
   def show
+    render json: @category
   end
 
   # GET /categories/new
@@ -26,14 +28,10 @@ class V1::CategoriesController < ApplicationController
   def create
     @category = Category.new(category_params)
 
-    respond_to do |format|
-      if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
-        format.json { render :show, status: :created, location: @category }
-      else
-        format.html { render :new }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+    if @category.save
+      @category
+    else
+      render json: @category.errors, status: :unprocessable_entity
     end
   end
 
@@ -69,6 +67,6 @@ class V1::CategoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def category_params
-      params.require(:category).permit(:name, :goal)
+      params.permit(:name, :goal)
     end
 end
