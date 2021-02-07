@@ -3,10 +3,12 @@ import PropTypes from "prop-types"
 import {Page} from "tabler-react";
 class Item extends React.Component {
   render () {
+    let {mode} = this.props
+
     return (
       <React.Fragment>
         <Page.Content>
-          <h1> this is Items page </h1>
+            {mode}
         </Page.Content>
       </React.Fragment>
     );
