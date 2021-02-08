@@ -29,10 +29,8 @@ class V1::ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
+        format.json { render json: @item }
       else
-        format.html { render :new }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +67,6 @@ class V1::ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name, :isin, :price, :type, :category_id)
+      params.permit(:name, :isin, :price, :item_type, :category_id)
     end
 end

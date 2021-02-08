@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_22_223215) do
+ActiveRecord::Schema.define(version: 2021_02_08_232600) do
 
   create_table "assets", force: :cascade do |t|
     t.string "name"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_01_22_223215) do
     t.string "name"
     t.string "isin"
     t.decimal "price", precision: 10, scale: 2
-    t.string "type"
+    t.string "item_type"
     t.integer "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
