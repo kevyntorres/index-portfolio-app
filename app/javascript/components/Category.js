@@ -2,12 +2,16 @@ import React from "react"
 import PropTypes from "prop-types"
 import {Page, Button, Card, Form, Nav, Grid} from "tabler-react"
 import CategoryView from "./CategoryView";
+import NewItem from "./NewItem";
+import AddCategory from "./AddCategory";
 class Category extends React.Component {
     constructor() {
         super();
         this.state = {
-            data: []
+            data: [],
+            addForm: false
         }
+        this.handleNewButton = this.handleNewButton.bind(this)
     }
     componentDidMount(){
         fetch('/v1/categories')
@@ -24,8 +28,20 @@ class Category extends React.Component {
             items.map(cat=> <CategoryView key={cat.id} data={cat} />)
         )
     }
-    render () {
 
+    handleNewButton(){
+        this.setState((prevState) => {
+            return {
+                addForm: !prevState.addForm
+            }
+        })
+    }
+
+    saveButton(name){
+        alert(name)
+    }
+
+    render (){
         return (
           <React.Fragment>
             <Page.Content>
@@ -34,8 +50,8 @@ class Category extends React.Component {
                     footer={
                         <Card.Footer>
                             <div className="d-flex">
-                                <Button color="primary" icon="plus" RootComponent="a" href="/categories/new" className="ml-auto">
-                                    Add new
+                                <Button id="addButton" color="primary" icon="plus" className="ml-auto" onClick={this.handleNewButton}>
+                                    { this.state.addForm ? "Close" : "Add New" }
                                 </Button>
                             </div>
                         </Card.Footer>
@@ -45,6 +61,7 @@ class Category extends React.Component {
                     { this.categoryItems(this.state.data)}
                     </Grid.Row>
                 </Page.Card>
+                { this.state.addForm ? <AddCategory saveButton={this.saveButton} handleNewButton={this.handleNewButton}/> : "" }
             </Page.Content>
           </React.Fragment>
         );
