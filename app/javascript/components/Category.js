@@ -37,7 +37,7 @@ class Category extends React.Component {
         })
     }
 
-    saveButton(name){
+    saveButtonMethod({name, goal}){
         alert(name)
     }
 
@@ -61,7 +61,7 @@ class Category extends React.Component {
                     { this.categoryItems(this.state.data)}
                     </Grid.Row>
                 </Page.Card>
-                { this.state.addForm ? <AddCategory saveButton={this.saveButton} handleNewButton={this.handleNewButton}/> : "" }
+                { this.state.addForm ? <AddCategory saveButton={this.saveButtonMethod} handleNewButton={this.handleNewButton}/> : "" }
             </Page.Content>
           </React.Fragment>
         );
