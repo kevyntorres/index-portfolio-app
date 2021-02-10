@@ -12,6 +12,7 @@ class Category extends React.Component {
             addForm: false
         }
         this.handleNewButton = this.handleNewButton.bind(this)
+        this.saveButtonMethod = this.saveButtonMethod.bind(this)
     }
     componentDidMount(){
         fetch('/v1/categories')
@@ -38,7 +39,16 @@ class Category extends React.Component {
     }
 
     saveButtonMethod({name, goal}){
-        alert(name)
+        const newCategory = {
+            name: name,
+            goal: goal
+        }
+        this.setState((prevState) => {
+            return {
+                data: prevState.data.push(newCategory)
+            }
+        })
+        this.handleNewButton()
     }
 
     render (){
