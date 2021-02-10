@@ -43,11 +43,24 @@ class Category extends React.Component {
             name: name,
             goal: goal
         }
-        this.setState((prevState) => {
-            return {
-                data: prevState.data.push(newCategory)
-            }
+
+        fetch('/v1/categories', {
+            method: 'POST',
+            body: JSON.stringify(newCategory),
+            headers: {
+                'Content-Type': 'application/json'
+            },
         })
+            .then(response => response.json())
+            .then(data => {
+                this.setState((prevState) => {
+                    let old_data = prevState.data
+                    old_data.push(data)
+                    return {
+                        data: old_data
+                    }
+                })
+            });
         this.handleNewButton()
     }
 

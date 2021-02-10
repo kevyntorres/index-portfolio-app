@@ -8,13 +8,14 @@ class CategoryView extends React.Component {
               <Grid.Col sm={6} lg={4}>
                 <Card>
                   <Table cards>
+                      <Table.Body>
                           <Table.Row>
                               <Table.Col>{this.props.data.name}</Table.Col>
                               <Table.Col alignContent="right">
                                   <Badge color="default">{this.props.data.goal}%</Badge>
                               </Table.Col>
                           </Table.Row>
-
+                      </Table.Body>
                       </Table>
                 </Card>
               </Grid.Col>
