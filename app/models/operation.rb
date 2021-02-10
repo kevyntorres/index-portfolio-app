@@ -1,3 +1,3 @@
 class Operation < ApplicationRecord
-  belongs_to :asset
+  belongs_to :item
 end

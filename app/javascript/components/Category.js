@@ -51,8 +51,15 @@ class Category extends React.Component {
                 'Content-Type': 'application/json'
             },
         })
-            .then(response => response.json())
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Something went wrong');
+                }
+            })
             .then(data => {
+                console.log(data)
                 this.setState((prevState) => {
                     let old_data = prevState.data
                     old_data.push(data)
@@ -60,7 +67,10 @@ class Category extends React.Component {
                         data: old_data
                     }
                 })
-            });
+            })
+            .catch(error => {
+                alert(error);
+            })
         this.handleNewButton()
     }
 
