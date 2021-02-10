@@ -5,35 +5,32 @@ import C3Chart from "react-c3js";
 import 'c3/c3.css';
 class CategoryGraph extends React.Component {
 
-    names(){
-        return (
+    columns(){
+        return(
             this.props.data.map((cat => {
-                return [cat.key, cat.name]
+                return [cat.id, cat.goal]
             }))
         )
     }
 
-    render () {
-        let columnsArray = () => {
-            return (
-                [this.props.data.map((cat => {
-                    return [cat.key, cat.goal]
-                }))]
-            )
-        }
+    names(){
+        let obj = {}
+        this.props.data.map((cat => {
+            return obj[cat.id] = cat.name
+        })
+        )
+        return obj
+    }
 
-        console.log(columnsArray)
+    render () {
+        console.log(this.names())
 
         const data = {
-            columns: columnsArray,
+            columns:
+               this.columns()
+            ,
             type: "pie", // default type of chart,
-            names: {
-                // name of each serie
-                data1: "A",
-                data2: "B",
-                data3: "C",
-                data4: "D",
-            }
+            names: this.names()
         }
 
 

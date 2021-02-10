@@ -79,7 +79,7 @@ class Category extends React.Component {
         return (
           <React.Fragment>
             <Page.Content>
-                <CategoryGraph categories={ }/>
+                <CategoryGraph data={this.state.data}/>
                 <Page.Card
                     title="Categories"
                     footer={
