@@ -4,6 +4,7 @@ import {Page, Button, Card, Form, Nav, Grid} from "tabler-react"
 import CategoryView from "./CategoryView";
 import NewItem from "./NewItem";
 import AddCategory from "./AddCategory";
+import CategoryGraph from "./CategoryGraph";
 class Category extends React.Component {
     constructor() {
         super();
