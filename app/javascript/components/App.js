@@ -1,17 +1,17 @@
 import React from "react"
 import HelloWorld from './HelloWorld'
-import Category from './Category'
-import AddCategory from './AddCategory'
+import Category from './categories/Category'
+import AddCategory from './categories/AddCategory'
 import Operation from './Operation'
-import Item from './Item'
+import Item from './items/Item'
 import PropTypes from "prop-types"
 import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Page } from "tabler-react"
-import AllItems from "./AllItems";
-import NewItem from "./NewItem";
-import EditItem from "./EditItem";
+import AllItems from "./items/AllItems";
+import NewItem from "./items/NewItem";
+import EditItem from "./items/EditItem";
 class App extends React.Component {
   render () {
     return (

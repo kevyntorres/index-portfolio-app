@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import {Button, Card, Form, Page} from "tabler-react";
+import ListItem from "./ListItem";
 class NewItem extends React.Component {
   constructor() {
     super();
@@ -9,10 +10,28 @@ class NewItem extends React.Component {
       isin: '',
       price: '',
       item_type: '',
-      category_id: null
+      category_id: null,
+      categories: []
     }
     this.handleChange = this.handleChange.bind(this)
   }
+
+  componentDidMount() {
+    fetch('/v1/categories')
+        .then(response => response.json())
+        .then(data => {
+          this.setState({
+            categories: data
+          })
+        });
+  }
+
+  assetsItems(items) {
+    return (
+        items.map(item=> <option value={item.id}>{item.name}</option>)
+    )
+  }
+
   handleChange(event) {
     const {name, value} = event.target
     this.setState({
@@ -67,15 +86,14 @@ class NewItem extends React.Component {
                   onChange={this.handleChange}
                   value={this.state.item_type}
               />
-              <Form.Input
-                  className="mb-3"
-                  type={"number"}
-                  name='category_id'
-                  label='Category'
-                  placeholder='Enter category'
-                  onChange={this.handleChange}
-                  value={this.state.category_id}
-              />
+              <Form.Select
+                className="mb-3"
+                name='category_id'
+                label='Category'
+                onChange={this.handleChange}
+                value={this.state.category_id}>
+                  {this.assetsItems(this.state.categories)}
+              </Form.Select>
             </Page.Card>
           </Form>
         </React.Fragment>
