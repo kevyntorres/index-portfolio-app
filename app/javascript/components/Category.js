@@ -14,6 +14,7 @@ class Category extends React.Component {
         }
         this.handleNewButton = this.handleNewButton.bind(this)
         this.saveButtonMethod = this.saveButtonMethod.bind(this)
+        this.deleteCategory = this.deleteCategory.bind(this)
     }
     componentDidMount(){
         fetch('/v1/categories')
@@ -37,6 +38,32 @@ class Category extends React.Component {
                 addForm: !prevState.addForm
             }
         })
+    }
+
+    deleteCategory(id){
+        fetch(`'/v1/categories/${id}'`, {
+            method: 'DELETE',
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Something went wrong');
+                }
+            })
+            .then(() => {
+                this.setState((prevState) => {
+                    let data = prevState.data
+                    data.filter((cat)=>cat.id !== id)
+                    return {
+                        data: data
+                    }
+                })
+            })
+            .catch(error => {
+                alert(error);
+            })
+        this.handleNewButton()
     }
 
     saveButtonMethod({name, goal}){
@@ -96,7 +123,12 @@ class Category extends React.Component {
                     { this.categoryItems(this.state.data)}
                     </Grid.Row>
                 </Page.Card>
-                { this.state.addForm ? <AddCategory saveButton={this.saveButtonMethod} handleNewButton={this.handleNewButton}/> : "" }
+                { this.state.addForm ?
+                    <AddCategory
+                        saveButton={this.saveButtonMethod}
+                        handleNewButton={this.handleNewButton}
+                        deleteCategory={this.deleteCategory}
+                    /> : "" }
             </Page.Content>
           </React.Fragment>
         );
