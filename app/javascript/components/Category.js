@@ -28,7 +28,7 @@ class Category extends React.Component {
 
     categoryItems(items) {
         return (
-            items.map(cat=> <CategoryView key={cat.id} data={cat} />)
+            items.map(cat=> <CategoryView key={cat.id} data={cat} deleteCategory={this.deleteCategory} />)
         )
     }
 
@@ -41,30 +41,23 @@ class Category extends React.Component {
     }
 
     deleteCategory(id){
-        fetch(`'/v1/categories/${id}'`, {
-            method: 'DELETE',
+        fetch(`/v1/categories/${id}`, {
+            method: 'DELETE'
         })
             .then(response => {
                 if (response.ok) {
-                    return response.json();
+                    this.setState((prevState) => {
+                        let data = prevState.data
+                        data.filter((cat)=>cat.id !== id)
+                        return {
+                            data: data
+                        }
+                    })
                 } else {
                     throw new Error('Something went wrong');
                 }
             })
-            .then(() => {
-                this.setState((prevState) => {
-                    let data = prevState.data
-                    data.filter((cat)=>cat.id !== id)
-                    return {
-                        data: data
-                    }
-                })
-            })
-            .catch(error => {
-                alert(error);
-            })
-        this.handleNewButton()
-    }
+        }
 
     saveButtonMethod({name, goal}){
         const newCategory = {
@@ -127,7 +120,6 @@ class Category extends React.Component {
                     <AddCategory
                         saveButton={this.saveButtonMethod}
                         handleNewButton={this.handleNewButton}
-                        deleteCategory={this.deleteCategory}
                     /> : "" }
             </Page.Content>
           </React.Fragment>
