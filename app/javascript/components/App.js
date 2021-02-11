@@ -12,6 +12,7 @@ import { Page } from "tabler-react"
 import AllItems from "./AllItems";
 import NewItem from "./NewItem";
 import EditItem from "./EditItem";
+import "tabler-react/dist/Tabler.css";
 class App extends React.Component {
   render () {
     return (
