@@ -13,6 +13,10 @@ rails db:migrate
 
 rails server
 
+https://index-portfolio-app.herokuapp.com/
+
+
+
 
 Things you may want to cover:
 
