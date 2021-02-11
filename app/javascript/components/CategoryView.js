@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import {Table, Badge, Grid, Card} from "tabler-react"
+import {Table, Badge, Grid, Card, Button} from "tabler-react"
 class CategoryView extends React.Component {
   render () {
       if (this.props.data.name) {
@@ -17,6 +17,7 @@ class CategoryView extends React.Component {
                           </Table.Row>
                       </Table.Body>
                       </Table>
+                    <Button size="sm" className='x' color="danger" icon="trash" />
                 </Card>
               </Grid.Col>
           )
