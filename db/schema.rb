@@ -10,18 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_08_232600) do
-
-  create_table "assets", force: :cascade do |t|
-    t.string "name"
-    t.string "isin"
-    t.decimal "price", precision: 10, scale: 2
-    t.string "type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "category_id", null: false
-    t.index ["category_id"], name: "index_assets_on_category_id"
-  end
+ActiveRecord::Schema.define(version: 2021_02_12_192659) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -42,8 +31,8 @@ ActiveRecord::Schema.define(version: 2021_02_08_232600) do
   end
 
   create_table "operations", force: :cascade do |t|
-    t.integer "asset_id", null: false
-    t.string "type"
+    t.integer "item_id", null: false
+    t.string "operations_type"
     t.decimal "tax", precision: 10, scale: 2
     t.integer "quantity"
     t.decimal "price", precision: 10, scale: 2
@@ -51,10 +40,9 @@ ActiveRecord::Schema.define(version: 2021_02_08_232600) do
     t.datetime "operated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["asset_id"], name: "index_operations_on_asset_id"
+    t.index ["item_id"], name: "index_operations_on_item_id"
   end
 
-  add_foreign_key "assets", "categories"
   add_foreign_key "items", "categories"
-  add_foreign_key "operations", "assets"
+  add_foreign_key "operations", "items"
 end
