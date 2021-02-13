@@ -1,6 +1,8 @@
 import React from "react"
 import {Page, Card, Table, Grid, Button} from "tabler-react";
 import ListOperation from "../ListOperation";
+import AddCategory from "../categories/AddCategory";
+import AddOperation from "../AddOperation";
 class Operation extends React.Component {
     constructor() {
         super();
@@ -8,7 +10,7 @@ class Operation extends React.Component {
             data: [],
             addForm: false
         }
-        // this.handleNewButton = this.handleNewButton.bind(this)
+        this.handleNewButton = this.handleNewButton.bind(this)
         // this.saveButtonMethod = this.saveButtonMethod.bind(this)
         // this.deleteCategory = this.deleteCategory.bind(this)
     }
@@ -21,6 +23,14 @@ class Operation extends React.Component {
                     data: data
                 })
             });
+    }
+
+    handleNewButton(){
+        this.setState((prevState) => {
+            return {
+                addForm: !prevState.addForm
+            }
+        })
     }
 
     operationItems(items) {
@@ -48,24 +58,32 @@ class Operation extends React.Component {
     return (
       <React.Fragment>
         <Page.Content>
-            <Grid.Col width={12}>
-                <Card>
-                    <Card.Header>Operations
-                        <Button id="addButton" color="primary" icon="plus" className="ml-auto">
-                            Add New
+            { this.state.addForm ?
+                <AddOperation
+                /> : "" }
+            <Page.Card
+                header={
+                    <Card.Header>
+                        <Card.Title>Operations</Card.Title>
+                        <Button id="addButton" color="primary" icon="plus" className="ml-auto" onClick={this.handleNewButton}>
+                            { this.state.addForm ? "Close" : "Add New" }
                         </Button>
                     </Card.Header>
-
-                    <Table>
-                        <Table.Header>
-                            {this.operationHeaders()}
-                        </Table.Header>
-                    <Table.Body>
-                        {this.operationItems(this.state.data)}
-                    </Table.Body>
-                    </Table>
-                </Card>
-            </Grid.Col>
+                }
+            >
+                <Grid.Col width={12}>
+                    <Card>
+                        <Table>
+                            <Table.Header>
+                                {this.operationHeaders()}
+                            </Table.Header>
+                        <Table.Body>
+                            {this.operationItems(this.state.data)}
+                        </Table.Body>
+                        </Table>
+                    </Card>
+                </Grid.Col>
+            </Page.Card>
         </Page.Content>
       </React.Fragment>
     );
