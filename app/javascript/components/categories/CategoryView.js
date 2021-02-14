@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import {Table, Badge, Grid, Card, Button} from "tabler-react"
 class CategoryView extends React.Component {
   render () {
-      if (this.props.data.name) {
+      if (this.props.data.name && this.props.data.id !== 0) {
           return (
               <Grid.Col sm={6} lg={4}>
                 <Card>

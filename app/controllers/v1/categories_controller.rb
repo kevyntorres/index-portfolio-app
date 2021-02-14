@@ -5,6 +5,8 @@ class V1::CategoriesController < ApplicationController
   # GET /categories.json
   def index
     @categories = Category.all
+    total_goals = @categories.map(&:goal)&.sum
+    @categories = @categories.to_a << Category.new(id: 0, name: 'Empty', goal: 100 - total_goals) unless total_goals == 100
     render json: @categories
   end
 
