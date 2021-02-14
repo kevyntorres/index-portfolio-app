@@ -1,10 +1,7 @@
 import React from "react"
-import HelloWorld from './HelloWorld'
 import Category from './categories/Category'
-import AddCategory from './categories/AddCategory'
 import Operation from './operations/Operation'
 import Item from './items/Item'
-import PropTypes from "prop-types"
 import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import Navbar from "./Navbar";
 import Footer from "./Footer";

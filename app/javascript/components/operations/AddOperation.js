@@ -5,7 +5,7 @@ class AddOperation extends React.Component {
     super();
     this.state = {
       item_id: null,
-      operations_type: "",
+        operations_type: "",
       tax: null,
       quantity: null,
       price: null,
@@ -64,13 +64,16 @@ class AddOperation extends React.Component {
                   value={this.state.item_id}>
                 {this.assetsItems(this.state.items)}
               </Form.Select>
-              <Form.Input
-                name='type'
-                label='Type'
-                placeholder='operation type'
-                value={this.state.operations_type}
-                onChange={this.handleChange}
-              />
+                <Form.Select
+                    className="mb-3"
+                    name='operations_type'
+                    label='Type'
+                    onChange={this.handleChange}
+                    value={this.state.item_id}
+                >
+                    <option value="Sell">Sell</option>
+                    <option value="Buy">Buy</option>
+                </Form.Select>
               <Form.Group label='Tax'>
               <Form.InputGroup>
                 <Form.InputGroupPrepend>
@@ -112,6 +115,8 @@ class AddOperation extends React.Component {
               <Form.Input
                   name='quantity'
                   label='Quantity'
+                  type="number"
+                  min="1"
                   value={this.state.quantity}
                   onChange={this.handleChange}
               />
