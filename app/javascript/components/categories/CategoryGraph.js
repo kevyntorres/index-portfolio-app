@@ -4,33 +4,45 @@ import { Card, colors } from 'tabler-react'
 import C3Chart from "react-c3js";
 import 'c3/c3.css';
 class CategoryGraph extends React.Component {
-
-    columns(){
-        return(
-            this.props.data.map((cat => {
-                return [cat.id, cat.goal]
-            }))
-        )
+    constructor() {
+        super();
+        this.state = {
+            columns: [],
+            names: {}
+        }
     }
 
-    names(){
+    componentDidMount() {
+        let columns = []
         let obj = {}
+        let total = 0
+        columns = this.props.data.map((cat => {
+            total += parseInt(cat.goal)
+            return [cat.id, cat.goal]
+        }))
         this.props.data.map((cat => {
+            total += parseInt(cat.goal)
             return obj[cat.id] = cat.name
-        })
+        }))
+        if (parseInt(total) < 100){
+            columns.push(['empty', 100-total])
+            obj['empty'] = 'Empty'
+        }
+        this.setState({
+            columns: columns,
+            names: obj
+            }
         )
-        return obj
     }
 
     render () {
-        console.log(this.names())
-
+        console.log(this.props)
         const data = {
             columns:
-               this.columns()
+               this.state.columns
             ,
             type: "pie", // default type of chart,
-            names: this.names()
+            names: this.state.names
         }
 
 

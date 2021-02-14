@@ -35,8 +35,26 @@ class AddCategory extends React.Component {
                         </Card.Footer>
                     }
                 >
-                  <Form.Input name='name' label='Name' placeholder='Enter category name' value={this.state.name} onChange={this.handleChange} />
-                  <Form.Input className="mb-3" icon="percent" name='goal' label='Goal' value={this.state.goal} onChange={this.handleChange} placeholder='Enter category goal %' position="append" />
+                  <Form.Input
+                      name='name'
+                      label='Name'
+                      placeholder='Enter category name'
+                      value={this.state.name}
+                      onChange={this.handleChange}
+                  />
+                  <Form.Input
+                      className="mb-3"
+                      icon="percent"
+                      type="number"
+                      name='goal'
+                      label='Goal'
+                      min="0"
+                      max="100"
+                      value={this.state.goal}
+                      onChange={this.handleChange}
+                      placeholder='Enter category goal %'
+                      position="append"
+                  />
                 </Page.Card>
             </Form>
       </React.Fragment>
