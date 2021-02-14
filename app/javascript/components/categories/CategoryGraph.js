@@ -12,37 +12,44 @@ class CategoryGraph extends React.Component {
         }
     }
 
-    componentDidMount() {
-        let columns = []
-        let obj = {}
-        let total = 0
-        columns = this.props.data.map((cat => {
-            total += parseInt(cat.goal)
+    columns(){
+        return (
+            this.props.data.map((cat => {
             return [cat.id, cat.goal]
-        }))
+        })))
+    }
+
+    names(){
+        let obj = {}
         this.props.data.map((cat => {
-            total += parseInt(cat.goal)
             return obj[cat.id] = cat.name
-        }))
-        if (parseInt(total) < 100){
-            columns.push(['empty', 100-total])
-            obj['empty'] = 'Empty'
-        }
-        this.setState({
-            columns: columns,
-            names: obj
-            }
+        })
         )
+        return obj
+    }
+
+    colors(){
+        let obj = {}
+        let i = 4
+        let colors_array = [ colors["blue-lighter"], colors["blue-light"], colors["blue"], colors["blue-darker"] ]
+        this.props.data.map((cat => {
+                i--
+                i<0 ? i=4 : i
+                return obj[cat.id] = colors_array[i]
+            })
+        )
+        return obj
     }
 
     render () {
-        console.log(this.props)
+
         const data = {
             columns:
-               this.state.columns
+               this.columns()
             ,
             type: "pie", // default type of chart,
-            names: this.state.names
+            colors: this.colors(),
+            names: this.names()
         }
 
 
@@ -50,7 +57,7 @@ class CategoryGraph extends React.Component {
       <React.Fragment>
         <Card>
           <Card.Header>
-            <Card.Title>Chart title</Card.Title>
+            <Card.Title>Categories Goals %</Card.Title>
           </Card.Header>
           <Card.Body>
             <C3Chart
