@@ -12,6 +12,7 @@ import { Page } from "tabler-react"
 import AllItems from "./items/AllItems";
 import NewItem from "./items/NewItem";
 import EditItem from "./items/EditItem";
+import HomePage from "./HomePage";
 class App extends React.Component {
   render () {
     return (
@@ -19,8 +20,8 @@ class App extends React.Component {
         <Navbar />
         <Page.Content>
             <Switch>
-              <Route exact path="/" render={() => ("Home!")} />
-              <Route exact path="/hello" render={() => <HelloWorld greeting= "Friend" />} />
+              <Route exact path="/" render={() => <HomePage />} />
+              <Route exact path="/hello" render={() => <HomePage />} />
               <Route exact path="/categories" render={() => <Category />} />
               <Route exact path="/operations" render={() => <Operation />} />
               <Route exact path="/assets" render={() => <Item mode={<AllItems/>}/>} />

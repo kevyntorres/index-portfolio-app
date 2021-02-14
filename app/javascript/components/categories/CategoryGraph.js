@@ -8,20 +8,31 @@ class CategoryGraph extends React.Component {
         super();
         this.state = {
             columns: [],
-            names: {}
+            names: {},
+            data: []
         }
+    }
+
+    componentDidMount() {
+        fetch('/v1/categories')
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    data: data
+                })
+            });
     }
 
     columns(){
         return (
-            this.props.data.map((cat => {
+            this.state.data.map((cat => {
             return [cat.id, cat.goal]
         })))
     }
 
     names(){
         let obj = {}
-        this.props.data.map((cat => {
+        this.state.data.map((cat => {
             return obj[cat.id] = cat.name
         })
         )
@@ -32,7 +43,7 @@ class CategoryGraph extends React.Component {
         let obj = {}
         let i = 4
         let colors_array = [ colors["blue-lighter"], colors["blue-light"], colors["blue"], colors["blue-darker"] ]
-        this.props.data.map((cat => {
+        this.state.data.map((cat => {
                 i--
                 i<0 ? i=4 : i
                 return obj[cat.id] = colors_array[i]
