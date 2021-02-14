@@ -41,22 +41,24 @@ class Category extends React.Component {
     }
 
     deleteCategory(id){
-        fetch(`/v1/categories/${id}`, {
-            method: 'DELETE'
-        })
-            .then(response => {
-                if (response.ok) {
-                    this.setState((prevState) => {
-                        let data = prevState.data
-                        data.filter((cat)=>cat.id !== id)
-                        return {
-                            data: data
-                        }
-                    })
-                } else {
-                    throw new Error('Something went wrong');
-                }
+        let result = confirm("Want to delete?");
+        if (result) {
+            fetch(`/v1/categories/${id}`, {
+                method: 'DELETE'
             })
+                .then(response => {
+                    if (response.ok) {
+                        this.setState((prevState) => {
+                            let data = prevState.data.filter((cat)=>cat.id !== id)
+                            return {
+                                data: data
+                            }
+                        })
+                    } else {
+                        throw new Error('Something went wrong');
+                    }
+                })
+            }
         }
 
     saveButtonMethod({name, goal}){
@@ -80,7 +82,6 @@ class Category extends React.Component {
                 }
             })
             .then(data => {
-                console.log(data)
                 this.setState((prevState) => {
                     let old_data = prevState.data
                     old_data.push(data)
