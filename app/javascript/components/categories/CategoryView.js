@@ -17,7 +17,7 @@ class CategoryView extends React.Component {
                           </Table.Row>
                       </Table.Body>
                       </Table>
-                    <Button size="sm" className='x' color="danger" icon="trash" onClick={()=>this.props.deleteCategory(this.props.data.id)} />
+                    <Button size="sm" className='x' color="danger" onClick={()=>this.props.deleteCategory(this.props.data.id)} />
                 </Card>
               </Grid.Col>
           )
