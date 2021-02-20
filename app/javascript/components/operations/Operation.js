@@ -1,7 +1,6 @@
 import React from "react"
 import {Page, Card, Table, Grid, Button} from "tabler-react";
 import ListOperation from "../ListOperation";
-import AddCategory from "../categories/AddCategory";
 import AddOperation from "./AddOperation";
 class Operation extends React.Component {
     constructor() {
