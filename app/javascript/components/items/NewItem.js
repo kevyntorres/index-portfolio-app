@@ -26,7 +26,7 @@ class NewItem extends React.Component {
 
   assetsItems(items) {
     return (
-        items.map(item=> <option value={item.id}>{item.name}</option>)
+        items.map(item=> <option key={item.id} value={item.id}>{item.name}</option>)
     )
   }
 

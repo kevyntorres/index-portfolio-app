@@ -28,6 +28,7 @@ class V1::CategoriesController < ApplicationController
   # POST /categories
   # POST /categories.json
   def create
+    binding.pry
     @category = Category.new(category_params)
 
     if @category.save

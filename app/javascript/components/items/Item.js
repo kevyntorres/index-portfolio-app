@@ -60,7 +60,7 @@ class Item extends React.Component {
     }
 
     saveButtonMethod(data){
-        const newItem = {
+        let newItem = {
             name: data.name,
             isin: data.isin,
             price: data.price,

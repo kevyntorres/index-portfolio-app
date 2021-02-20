@@ -59,13 +59,13 @@ class V1::ItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_item
-      @item = Item.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def item_params
-      params.permit(:name, :isin, :price, :item_type, :category_id, :item)
-    end
+  # Only allow a list of trusted parameters through.
+  def item_params
+    params.permit(:name, :isin, :price, :item_type, :category_id, :item)
+  end
 end
