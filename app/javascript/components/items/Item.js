@@ -2,6 +2,7 @@ import React from "react"
 import {Button, Card, Page, Table} from "tabler-react";
 import ListItem from "./ListItem";
 import NewItem from "./NewItem";
+import AddCategory from "../categories/AddCategory";
 class Item extends React.Component {
     constructor() {
         super();
@@ -11,6 +12,7 @@ class Item extends React.Component {
         }
         this.deleteItem = this.deleteItem.bind(this)
         this.handleNewButton = this.handleNewButton.bind(this)
+        this.saveButtonMethod = this.saveButtonMethod.bind(this)
     }
     componentDidMount(){
         fetch('/v1/items')
@@ -57,6 +59,44 @@ class Item extends React.Component {
         )
     }
 
+    saveButtonMethod(data){
+        const newItem = {
+            name: data.name,
+            isin: data.isin,
+            price: data.price,
+            item_type: data.item_type,
+            category_id: data.category_id
+        }
+
+        fetch('/v1/items', {
+            method: 'POST',
+            body: JSON.stringify(newItem),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Something went wrong');
+                }
+            })
+            .then(data => {
+                this.setState((prevState) => {
+                    let old_data = prevState.data
+                    old_data.push(data)
+                    return {
+                        data: old_data
+                    }
+                })
+            })
+            .catch(error => {
+                alert(error);
+            })
+        this.handleNewButton()
+    }
+
     render () {
         return (
             <React.Fragment>
@@ -84,7 +124,10 @@ class Item extends React.Component {
                     </Card>
                 </Page.Card>
                 { this.state.addForm ?
-                    <NewItem/> :
+                    <NewItem
+                        saveButton={this.saveButtonMethod}
+                        handleNewButton={this.handleNewButton}
+                    /> :
                     "" }
                 <h1>All</h1>
             </React.Fragment>

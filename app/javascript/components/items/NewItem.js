@@ -1,7 +1,5 @@
 import React from "react"
-import PropTypes from "prop-types"
 import {Button, Card, Form, Page} from "tabler-react";
-import ListItem from "./ListItem";
 class NewItem extends React.Component {
   constructor() {
     super();
@@ -41,14 +39,14 @@ class NewItem extends React.Component {
   render () {
     return (
         <React.Fragment>
-          <Form method='POST' action="/v1/items" onSubmit={(event) => alert(event.target.name + 'clicked')}>
+          <Form>
             <Page.Card
                 title="New Asset"
                 footer={
                   <Card.Footer>
                     <div className="d-flex">
-                      <Button link>Cancel</Button>
-                      <Button icon="check" color="primary" type='submit' value='Submit' className="ml-auto">
+                      <Button type="button" id="cncButton" onClick={this.props.handleNewButton}>Cancel</Button>
+                      <Button type="button" id="svButton" onClick={() => this.props.saveButton(this.state)} icon="check" color="primary" className="ml-auto">
                         Save
                       </Button>
                     </div>
