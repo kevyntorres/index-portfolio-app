@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import {Table, Button} from "tabler-react"
 class ListItem extends React.Component {
 
@@ -7,28 +6,33 @@ class ListItem extends React.Component {
         return (
             <Table.Row>
                 <Table.Col>
+                    {items.id}
+                </Table.Col>
+                <Table.Col>
                     {items.name}
                 </Table.Col>
-                <Table.Col className="text-right text-muted d-none d-md-table-cell text-nowrap">
+                <Table.Col className="text-muted d-none d-md-table-cell text-nowrap">
                     {items.isin}
                 </Table.Col>
-                <Table.Col className="text-right text-muted d-none d-md-table-cell text-nowrap">
+                <Table.Col className="text-muted d-none d-md-table-cell text-nowrap">
                     {items.price}
                 </Table.Col>
-                <Table.Col className="text-right text-muted d-none d-md-table-cell text-nowrap">
+                <Table.Col className="text-muted d-none d-md-table-cell text-nowrap">
+                    {items.item_type}
+                </Table.Col>
+                <Table.Col className="text-muted d-none d-md-table-cell text-nowrap">
                     {items.category_id}
                 </Table.Col>
-                <Table.Col className="text-right d-none d-md-table-cell text-nowrap">
+                <Table.Col className="text-center d-none d-md-table-cell text-nowrap">
                     <Button.List>
-                        <Button onClick={this.props.deleteItem} size="sm" outline color="primary">Edit</Button>
-                            <a href={"v1/items/"+items.id} data-method="delete" data-confirm="Are you sure?">
-                                <Button
-                                    size="sm"
-                                    outline
-                                    color="danger"
-                                >Delete
-                                </Button>
-                            </a>
+                        <Button size="sm" outline color="primary">Edit</Button>
+                        <Button
+                            size="sm"
+                            outline
+                            color="danger"
+                            onClick={()=>this.props.deleteItem(this.props.data.id)}
+                        >Delete
+                        </Button>
                     </Button.List>
                 </Table.Col>
             </Table.Row>

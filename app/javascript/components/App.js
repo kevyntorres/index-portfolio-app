@@ -6,9 +6,6 @@ import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Page } from "tabler-react"
-import AllItems from "./items/AllItems";
-import NewItem from "./items/NewItem";
-import EditItem from "./items/EditItem";
 import HomePage from "./HomePage";
 class App extends React.Component {
   render () {
@@ -21,9 +18,7 @@ class App extends React.Component {
               <Route exact path="/hello" render={() => <HomePage />} />
               <Route exact path="/categories" render={() => <Category />} />
               <Route exact path="/operations" render={() => <Operation />} />
-              <Route exact path="/assets" render={() => <Item mode={<AllItems/>}/>} />
-              <Route exact path="/assets/new" render={() => <Item mode={<NewItem/>}/>} />
-              <Route exact path="/assets/edit" render={() => <Item mode={<EditItem/>}/>} />
+              <Route exact path="/assets" render={() => <Item />} />
             </Switch>
         </Page.Content>
         <Footer />

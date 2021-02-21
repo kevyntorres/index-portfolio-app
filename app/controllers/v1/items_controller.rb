@@ -25,14 +25,13 @@ class V1::ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+
     @item = Item.new(item_params)
 
-    respond_to do |format|
-      if @item.save
-        format.json { render json: @item }
-      else
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+    if @item.save
+      render json: @item
+    else
+      render json: @item.errors, status: :unprocessable_entity
     end
   end
 
@@ -60,13 +59,13 @@ class V1::ItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_item
-      @item = Item.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def item_params
-      params.permit(:name, :isin, :price, :item_type, :category_id)
-    end
+  # Only allow a list of trusted parameters through.
+  def item_params
+    params.permit(:name, :isin, :price, :item_type, :category_id, :item)
+  end
 end
