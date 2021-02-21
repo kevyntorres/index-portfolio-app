@@ -25,11 +25,12 @@ class ListItem extends React.Component {
                 </Table.Col>
                 <Table.Col className="text-center d-none d-md-table-cell text-nowrap">
                     <Button.List>
-                        <Button onClick={this.props.deleteItem} size="sm" outline color="primary">Edit</Button>
+                        <Button size="sm" outline color="primary">Edit</Button>
                         <Button
                             size="sm"
                             outline
                             color="danger"
+                            onClick={()=>this.props.deleteItem(this.props.data.id)}
                         >Delete
                         </Button>
                     </Button.List>

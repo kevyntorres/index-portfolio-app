@@ -31,14 +31,27 @@ class Item extends React.Component {
         })
     }
 
-    deleteItem(itemId){
-        this.setState((prevState)=>{
-            let updData = prevState.data.filter(item => item.id !== itemId)
-            return {
-                data: updData
-            }
-        })
+    deleteItem(id){
+        let result = confirm("Want to delete?");
+        if (result) {
+            fetch(`/v1/items/${id}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        this.setState((prevState) => {
+                            let data = prevState.data.filter((cat)=>cat.id !== id)
+                            return {
+                                data: data
+                            }
+                        })
+                    } else {
+                        throw new Error('Something went wrong');
+                    }
+                })
+        }
     }
+
     itemsHeaders() {
         let items = [
             'ID',
@@ -55,7 +68,7 @@ class Item extends React.Component {
 
     assetsItems(items) {
         return (
-            items.map(item=> <ListItem key={item.id} data={item} />)
+            items.map(item=> <ListItem key={item.id} data={item} deleteItem={this.deleteItem} />)
         )
     }
 
