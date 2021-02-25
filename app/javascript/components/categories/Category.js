@@ -1,5 +1,5 @@
 import React from "react"
-import {Page, Button, Card, Form, Nav, Grid} from "tabler-react"
+import {Page, Button, Card, Grid} from "tabler-react"
 import CategoryView from "./CategoryView";
 import AddCategory from "./AddCategory";
 class Category extends React.Component {
