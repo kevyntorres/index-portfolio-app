@@ -1,12 +1,13 @@
 import React from "react"
-import PropTypes from "prop-types"
-import { Site } from "tabler-react";
+import { Container } from "react-bootstrap"
 class Footer extends React.Component {
   render () {
     return (
-      <React.Fragment>
-        <Site.Footer note={"Footer"} />
-      </React.Fragment>
+      <footer className="bg-white text-right text-lg-start footer fixed-bottom">
+        <Container>
+          Footer
+        </Container>
+      </footer>
     );
   }
 }
