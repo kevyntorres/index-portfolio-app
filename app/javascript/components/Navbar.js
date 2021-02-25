@@ -40,7 +40,7 @@ class NavbarComponent extends React.Component {
     ]
     return (
         <>
-            <Navbar className="navbar-header">
+            <Navbar bg="white" className="navbar-header">
                 <Container>
                     <Navbar.Brand href="/">
                         <img
@@ -53,7 +53,7 @@ class NavbarComponent extends React.Component {
                     </Navbar.Brand>
                 </Container>
             </Navbar>
-            <Navbar className="navbar-header" collapseOnSelect expand="lg" variant="light">
+            <Navbar bg="white" className="navbar-header" collapseOnSelect expand="lg" variant="light">
                 <Container>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
