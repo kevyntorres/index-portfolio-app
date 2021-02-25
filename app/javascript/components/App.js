@@ -5,15 +5,15 @@ import Item from './items/Item'
 import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import NavbarComponent from "./Navbar";
 import Footer from "./Footer";
-import { Page } from "tabler-react"
+import { Container } from "react-bootstrap"
 import HomePage from "./HomePage";
 class App extends React.Component {
   render () {
     return (
     <>
         <NavbarComponent />
-        <Page.Content>
-            <BrowserRouter>
+        <Container className="mt-4">
+        <BrowserRouter>
             <Switch>
               <Route exact path="/" render={() => <HomePage />} />
               <Route exact path="/hello" render={() => <HomePage />} />
@@ -22,7 +22,7 @@ class App extends React.Component {
               <Route exact path="/assets" render={() => <Item />} />
             </Switch>
         </BrowserRouter>
-        </Page.Content>
+        </Container>
         <Footer />
     </>
     );
