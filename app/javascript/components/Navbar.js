@@ -1,12 +1,11 @@
 import React from "react"
-import PropTypes from "prop-types"
-import { Site, Nav } from "tabler-react";
+import { Navbar, Nav } from 'react-bootstrap';
 
-class Navbar extends React.Component {
+class NavbarComponent extends React.Component {
 
     navItems(items) {
         return (
-            items.map(item => <Nav.Item key={item.name} value={item.name} icon={item.icon} to={item.to}/>)
+            items.map(item => <Nav.Link key={item.name} href={item.to}>{item.name} </Nav.Link>)
         )
 
     }
@@ -34,12 +33,25 @@ class Navbar extends React.Component {
         }
     ]
     return (
-      <React.Fragment>
-        <Site.Header imageURL={'/assets/logo.jpeg'} />
-        <Site.Nav items={this.navItems(itemsMenu)}/>
-      </React.Fragment>
+          <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
+              <Navbar.Brand href="/">
+                <img
+                  alt="IndexPortfolioApp"
+                  src="./assets/logo.jpeg"
+                  width="220"
+                  height="65"
+                  className="d-inline-block align-top"
+                />
+              </Navbar.Brand>
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+              <Navbar.Collapse id="responsive-navbar-nav">
+                  <Nav className="mr-auto">
+                      {this.navItems(itemsMenu)}
+                  </Nav>
+              </Navbar.Collapse>
+          </Navbar>
     );
   }
 }
 
-export default Navbar
+export default NavbarComponent
