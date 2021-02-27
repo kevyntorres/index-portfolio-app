@@ -95,7 +95,6 @@ class Category extends React.Component {
 
     render (){
         return (
-          <React.Fragment>
             <Page.Content>
                 <Page.Card
                     title="Categories"
@@ -119,7 +118,6 @@ class Category extends React.Component {
                         handleNewButton={this.handleNewButton}
                     /> : "" }
             </Page.Content>
-          </React.Fragment>
         );
      }
 }

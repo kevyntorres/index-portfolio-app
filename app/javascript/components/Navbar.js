@@ -10,7 +10,7 @@ class NavbarComponent extends React.Component {
             items.map(item => {
                 return(
                     <IconContext.Provider value={{ className: "navbar-icons" }}>
-                        <Nav.Link key={item.to} href={item.to}>{item.icon} {item.name} </Nav.Link>
+                        <Nav.Link key={item.key} href={item.to}>{item.icon} {item.name} </Nav.Link>
                     </IconContext.Provider>
                 )
             }))
@@ -18,21 +18,25 @@ class NavbarComponent extends React.Component {
     render () {
     const itemsMenu = [
         {
+            key: 1,
             name: "Home",
             icon: <FiHome />,
             to: "/"
         },
         {
+            key: 2,
             name: "Categories",
             icon: <FiFolder />,
             to: "/categories"
         },
         {
+            key: 3,
             name: "Operations",
             icon: <FiRefreshCcw />,
             to: "/operations"
         },
         {
+            key: 4,
             name: "Assets",
             icon: <FiBox />,
             to: "/assets"
