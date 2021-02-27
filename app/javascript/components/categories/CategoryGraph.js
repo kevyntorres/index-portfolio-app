@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { Card, colors } from 'tabler-react'
 import C3Chart from "react-c3js";
 import 'c3/c3.css';
