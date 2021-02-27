@@ -1,5 +1,6 @@
 import React from "react"
-import {Page, Button, Card, Grid} from "tabler-react"
+import { Button } from "tabler-react"
+import {Container, Card, CardGroup} from "react-bootstrap"
 import CategoryView from "./CategoryView";
 import AddCategory from "./AddCategory";
 class Category extends React.Component {
@@ -95,29 +96,30 @@ class Category extends React.Component {
 
     render (){
         return (
-            <Page.Content>
-                <Page.Card
-                    title="Categories"
-                    footer={
-                        <Card.Footer>
-                            <div className="d-flex">
-                                <Button id="addButton" color="primary" icon="plus" className="ml-auto" onClick={this.handleNewButton}>
-                                    { this.state.addForm ? "Close" : "Add New" }
-                                </Button>
-                            </div>
-                        </Card.Footer>
-                    }
-                >
-                    <Grid.Row cards={true}>
+            <Container>
+                <Card>
+                    <Card.Header>
+                        Categories
+                    </Card.Header>
+                    <Card.Body>
+                    <CardGroup>
                     { this.categoryItems(this.state.data)}
-                    </Grid.Row>
-                </Page.Card>
+                    </CardGroup>
+                    </Card.Body>
+                    <Card.Footer>
+                        <div className="d-flex">
+                            <Button id="addButton" color="primary" icon="plus" className="ml-auto" onClick={this.handleNewButton}>
+                                { this.state.addForm ? "Close" : "Add New" }
+                            </Button>
+                        </div>
+                    </Card.Footer>
+                </Card>
                 { this.state.addForm ?
                     <AddCategory
                         saveButton={this.saveButtonMethod}
                         handleNewButton={this.handleNewButton}
                     /> : "" }
-            </Page.Content>
+            </Container>
         );
      }
 }

@@ -5,8 +5,8 @@ class CategoryView extends React.Component {
       if (this.props.data.name && this.props.data.id !== 0) {
           return (
               <div className="col-sm-6 col-lg-4">
-                <Card>
-                  <Table>
+                <Card className="mb-3">
+                  <Table className="card-table">
                       <tbody>
                           <tr>
                               <td>{this.props.data.name}</td>
