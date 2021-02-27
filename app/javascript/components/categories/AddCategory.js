@@ -35,17 +35,17 @@ class AddCategory extends React.Component {
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Goal</Form.Label>
+                        <Form.Control
+                            className="mb-3"
+                            type="number"
+                            name='goal'
+                            min="0"
+                            max="100"
+                            value={this.state.goal}
+                            onChange={this.handleChange}
+                            placeholder='Enter category goal %'
+                        />
                     </Form.Group>
-                    <Form.Control
-                        className="mb-3"
-                        type="number"
-                        name='goal'
-                        min="0"
-                        max="100"
-                        value={this.state.goal}
-                        onChange={this.handleChange}
-                        placeholder='Enter category goal %'
-                    />
                 </Card.Body>
                 <Card.Footer className="bg-white">
                     <div className="d-flex">
