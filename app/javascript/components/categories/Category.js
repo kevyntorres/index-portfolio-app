@@ -98,7 +98,7 @@ class Category extends React.Component {
         return (
             <Container>
                 <Card>
-                    <Card.Header>
+                    <Card.Header className="bg-white">
                         Categories
                     </Card.Header>
                     <Card.Body>
@@ -106,7 +106,7 @@ class Category extends React.Component {
                             { this.categoryItems(this.state.data) }
                         </CardGroup>
                     </Card.Body>
-                    <Card.Footer>
+                    <Card.Footer className="bg-white">
                         <div className="d-flex">
                             <Button id="addButton" variant="primary" className="ml-auto" onClick={this.handleNewButton}>
                                 <FiPlus /> { this.state.addForm ? "Close" : "Add New" }

@@ -21,7 +21,7 @@ class AddCategory extends React.Component {
     return (
         <Form>
             <Card>
-                <Card.Header>New Category </Card.Header>
+                <Card.Header className="bg-white">New Category </Card.Header>
                 <Card.Body>
                     <Form.Group>
                         <Form.Label>Name</Form.Label>
@@ -47,9 +47,9 @@ class AddCategory extends React.Component {
                         placeholder='Enter category goal %'
                     />
                 </Card.Body>
-                <Card.Footer>
+                <Card.Footer className="bg-white">
                     <div className="d-flex">
-                        <Button type="button" id="cncButton" onClick={this.props.handleNewButton}>Cancel</Button>
+                        <Button type="button" id="cncButton" variant="default" onClick={this.props.handleNewButton}>Cancel</Button>
                         <Button type="button" id="svButton" onClick={() => this.props.saveButton(this.state)} icon="check" variant="primary" className="ml-auto">
                             Save
                         </Button>
