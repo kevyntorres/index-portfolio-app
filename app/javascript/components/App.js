@@ -13,15 +13,15 @@ class App extends React.Component {
     <>
         <NavbarComponent />
         <Container className="mt-4">
-        <BrowserRouter>
-            <Switch>
-              <Route exact path="/" render={() => <HomePage />} />
-              <Route exact path="/hello" render={() => <HomePage />} />
-              <Route exact path="/categories" render={() => <Category />} />
-              <Route exact path="/operations" render={() => <Operation />} />
-              <Route exact path="/assets" render={() => <Item />} />
-            </Switch>
-        </BrowserRouter>
+            <BrowserRouter>
+                <Switch>
+                  <Route exact path="/" render={() => <HomePage />} />
+                  <Route exact path="/hello" render={() => <HomePage />} />
+                  <Route exact path="/categories" render={() => <Category />} />
+                  <Route exact path="/operations" render={() => <Operation />} />
+                  <Route exact path="/assets" render={() => <Item />} />
+                </Switch>
+            </BrowserRouter>
         </Container>
         <Footer />
     </>
