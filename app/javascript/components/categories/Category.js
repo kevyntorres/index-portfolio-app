@@ -1,6 +1,6 @@
 import React from "react"
-import { Button } from "tabler-react"
-import {Container, Card, CardGroup} from "react-bootstrap"
+import {Container, Card, CardGroup, Button} from "react-bootstrap"
+import { FiPlus } from "react-icons/fi";
 import CategoryView from "./CategoryView";
 import AddCategory from "./AddCategory";
 class Category extends React.Component {
@@ -102,14 +102,14 @@ class Category extends React.Component {
                         Categories
                     </Card.Header>
                     <Card.Body>
-                    <CardGroup>
-                    { this.categoryItems(this.state.data)}
-                    </CardGroup>
+                        <CardGroup>
+                            { this.categoryItems(this.state.data) }
+                        </CardGroup>
                     </Card.Body>
                     <Card.Footer>
                         <div className="d-flex">
-                            <Button id="addButton" color="primary" icon="plus" className="ml-auto" onClick={this.handleNewButton}>
-                                { this.state.addForm ? "Close" : "Add New" }
+                            <Button id="addButton" variant="primary" className="ml-auto" onClick={this.handleNewButton}>
+                                <FiPlus /> { this.state.addForm ? "Close" : "Add New" }
                             </Button>
                         </div>
                     </Card.Footer>
@@ -118,7 +118,8 @@ class Category extends React.Component {
                     <AddCategory
                         saveButton={this.saveButtonMethod}
                         handleNewButton={this.handleNewButton}
-                    /> : "" }
+                    /> : ""
+                }
             </Container>
         );
      }
