@@ -66,7 +66,7 @@ class CategoryGraph extends React.Component {
     return (
       <React.Fragment>
         <Card>
-          <Card.Header>
+          <Card.Header className="bg-white">
             <Card.Title>Categories Goals %</Card.Title>
           </Card.Header>
           <Card.Body>
