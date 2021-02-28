@@ -1,5 +1,6 @@
 import React from "react"
 import {Button, Card, Form, Page} from "tabler-react";
+import { Container } from "react-bootstrap";
 class AddOperation extends React.Component {
   constructor() {
     super();
@@ -41,7 +42,6 @@ class AddOperation extends React.Component {
 
   render () {
     return (
-        <React.Fragment>
           <Form>
             <Page.Card
                 title="New Operation"
@@ -153,7 +153,6 @@ class AddOperation extends React.Component {
               </Form.Group>
             </Page.Card>
           </Form>
-        </React.Fragment>
     );
   }
 }
