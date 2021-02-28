@@ -1,6 +1,7 @@
 import React from "react"
 import { Container, Navbar, Nav } from 'react-bootstrap';
-import { FiHome, FiFolder, FiRefreshCcw, FiBox } from "react-icons/fi";
+import { FiHome, FiFolder, FiBook } from "react-icons/fi";
+import { FaFileInvoiceDollar } from "react-icons/fa";
 import { IconContext } from "react-icons";
 
 class NavbarComponent extends React.Component {
@@ -32,13 +33,13 @@ class NavbarComponent extends React.Component {
         {
             key: 3,
             name: "Operations",
-            icon: <FiRefreshCcw />,
+            icon: <FaFileInvoiceDollar />,
             to: "/operations"
         },
         {
             key: 4,
             name: "Assets",
-            icon: <FiBox />,
+            icon: <FiBook />,
             to: "/assets"
         }
     ]
