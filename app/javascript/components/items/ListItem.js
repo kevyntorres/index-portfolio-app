@@ -1,41 +1,38 @@
 import React from "react"
-import {Table, Button} from "tabler-react"
+import { Button} from "react-bootstrap"
 class ListItem extends React.Component {
 
     itemCols(items) {
         return (
-            <Table.Row>
-                <Table.Col>
+            <tr>
+                <td>
                     {items.id}
-                </Table.Col>
-                <Table.Col>
+                </td>
+                <td>
                     {items.name}
-                </Table.Col>
-                <Table.Col className="text-muted d-none d-md-table-cell text-nowrap">
+                </td>
+                <td className="text-muted d-none d-md-table-cell text-nowrap">
                     {items.isin}
-                </Table.Col>
-                <Table.Col className="text-muted d-none d-md-table-cell text-nowrap">
+                </td>
+                <td className="text-muted d-none d-md-table-cell text-nowrap">
                     {items.price}
-                </Table.Col>
-                <Table.Col className="text-muted d-none d-md-table-cell text-nowrap">
+                </td>
+                <td className="text-muted d-none d-md-table-cell text-nowrap">
                     {items.item_type}
-                </Table.Col>
-                <Table.Col className="text-muted d-none d-md-table-cell text-nowrap">
+                </td>
+                <td className="text-muted d-none d-md-table-cell text-nowrap">
                     {items.category_id}
-                </Table.Col>
-                <Table.Col className="text-center d-none d-md-table-cell text-nowrap">
-                    <Button.List>
-                        <Button size="sm" outline color="primary">Edit</Button>
+                </td>
+                <td className="text-center d-none d-md-table-cell text-nowrap">
+                        <Button size="sm" variant="outline-primary">Edit</Button>{' '}
                         <Button
                             size="sm"
-                            outline
-                            color="danger"
+                            variant="outline-danger"
                             onClick={()=>this.props.deleteItem(this.props.data.id)}
                         >Delete
                         </Button>
-                    </Button.List>
-                </Table.Col>
-            </Table.Row>
+                </td>
+            </tr>
         )
     }
   render () {

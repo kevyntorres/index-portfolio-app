@@ -1,8 +1,8 @@
 import React from "react"
-import {Button, Card, Page, Table} from "tabler-react";
+import { Card, Container, Button, Table } from "react-bootstrap";
 import ListItem from "./ListItem";
 import NewItem from "./NewItem";
-import AddCategory from "../categories/AddCategory";
+import {FiPlus} from "react-icons/fi";
 class Item extends React.Component {
     constructor() {
         super();
@@ -62,7 +62,7 @@ class Item extends React.Component {
             'Category',
             '']
         return (
-            items.map(cat => <Table.ColHeader>{cat}</Table.ColHeader>)
+            items.map(cat => <th>{cat}</th>)
         )
     }
 
@@ -112,30 +112,31 @@ class Item extends React.Component {
 
     render () {
         return (
-            <React.Fragment>
-                <Page.Card
-                    title="Assets"
-                    footer={
-                        <Card.Footer>
-                            <div className="d-flex">
-                                <Button id="addButton" color="primary" icon="plus" className="ml-auto" onClick={this.handleNewButton}>
-                                    { this.state.addForm ? "Close" : "Add New" }
-                                </Button>
-                            </div>
-                        </Card.Footer>
-                    }
-                >
-                    <Card>
-                        <Table className="card-table table-vcenter">
-                            <Table.Header>
-                                {this.itemsHeaders()}
-                            </Table.Header>
-                            <Table.Body>
-                                {this.assetsItems(this.state.data)}
-                            </Table.Body>
-                        </Table>
-                    </Card>
-                </Page.Card>
+            <Container>
+                <Card>
+                    <Card.Header className="bg-white">Assets</Card.Header>
+                    <Card.Body>
+                        <Card>
+                            <Table className="card-table table-vcenter">
+                                <thead>
+                                <tr>
+                                    {this.itemsHeaders()}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {this.assetsItems(this.state.data)}
+                                </tbody>
+                            </Table>
+                        </Card>
+                    </Card.Body>
+                    <Card.Footer className="bg-white">
+                        <div className="d-flex">
+                            <Button id="addButton" variant="primary" className="ml-auto" onClick={this.handleNewButton}>
+                                <FiPlus /> { this.state.addForm ? "Close" : "Add New" }
+                            </Button>
+                        </div>
+                    </Card.Footer>
+                </Card>
                 { this.state.addForm ?
                     <NewItem
                         saveButton={this.saveButtonMethod}
@@ -143,7 +144,7 @@ class Item extends React.Component {
                     /> :
                     "" }
                 <h1>All</h1>
-            </React.Fragment>
+            </Container>
         );
     }
 }
