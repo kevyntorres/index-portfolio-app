@@ -1,5 +1,5 @@
 import React from "react"
-import {Container, Card, CardGroup, Button} from "react-bootstrap"
+import {Container, Card, CardGroup, Button, ProgressBar} from "react-bootstrap"
 import { FiPlus } from "react-icons/fi";
 import CategoryView from "./CategoryView";
 import AddCategory from "./AddCategory";
@@ -59,6 +59,10 @@ class Category extends React.Component {
             }
         }
 
+        totalGoals(data){
+            return data.map(cat => cat.id !== 0 ? cat.goal: 0).reduce((a,b) => a+b, 0)
+        }
+
     saveButtonMethod({name, goal}){
         const newCategory = {
             name: name,
@@ -95,6 +99,7 @@ class Category extends React.Component {
     }
 
     render (){
+        let total = this.totalGoals(this.state.data)
         return (
             <Container>
                 <Card>
@@ -105,6 +110,7 @@ class Category extends React.Component {
                         <CardGroup>
                             { this.categoryItems(this.state.data) }
                         </CardGroup>
+                        <ProgressBar className="my-3 mx-3" striped now={total} label={`${total}%`} />
                     </Card.Body>
                     <Card.Footer className="bg-white">
                         <div className="d-flex">
@@ -121,7 +127,7 @@ class Category extends React.Component {
                     /> : ""
                 }
             </Container>
-        );
+        )
      }
 }
 
