@@ -33,9 +33,9 @@ class ListOperation extends React.Component {
   }
   render () {
     return (
-        <React.Fragment>
+        <>
           {this.itemCols(this.props.data)}
-        </React.Fragment>
+        </>
     );
   }
 }
