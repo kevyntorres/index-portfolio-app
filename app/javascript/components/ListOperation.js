@@ -1,5 +1,5 @@
 import React from "react"
-import {Button} from "tabler-react";
+import { Button } from "react-bootstrap";
 class ListOperation extends React.Component {
   itemCols(items) {
     return (
@@ -26,9 +26,7 @@ class ListOperation extends React.Component {
                 {items.platform}
               </td>
               <td className="d-none d-md-table-cell text-nowrap">
-                <Button.List>
-                  <Button size="sm" outline color="primary">Edit</Button>
-                </Button.List>
+                  <Button size="sm" variant="outline-primary">Edit</Button>
               </td>
             </tr>
     )
