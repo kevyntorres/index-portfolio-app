@@ -1,6 +1,5 @@
 import React from "react"
-import {Button, Card, Form, Page} from "tabler-react";
-import { Container } from "react-bootstrap";
+import { Form, Button, Card } from "react-bootstrap";
 class AddOperation extends React.Component {
   constructor() {
     super();
@@ -43,115 +42,92 @@ class AddOperation extends React.Component {
   render () {
     return (
           <Form>
-            <Page.Card
-                title="New Operation"
-                footer={
-                  <Card.Footer>
+            <Card>
+                <Card.Header className="bg-white">New Operation</Card.Header>
+                <Card.Body>
+                    <Form.Group>
+                        <Form.Label>Item</Form.Label>
+                        <Form.Control
+                            as="select"
+                            className="mb-3"
+                            name='item_id'
+                            onChange={this.handleChange}
+                            value={this.state.item_id}
+                        >
+                            {this.assetsItems(this.state.items)}
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Type</Form.Label>
+                        <Form.Control
+                            as="select"
+                            className="mb-3"
+                            name='operations_type'
+                            label='Type'
+                            onChange={this.handleChange}
+                            value={this.state.item_id}
+                        >
+                            <option value="Sell">Sell</option>
+                            <option value="Buy">Buy</option>
+                        </Form.Control>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Tax</Form.Label>
+                        <Form.Control
+                            className="mb-3"
+                            name='tax'
+                            value={this.state.tax}
+                            onChange={this.handleChange}
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Price</Form.Label>
+                        <Form.Control
+                            className="mb-3"
+                            name='price'
+                            value={this.state.price}
+                            onChange={this.handleChange}
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Quantity</Form.Label>
+                        <Form.Control
+                            name='quantity'
+                            type="number"
+                            min="1"
+                            value={this.state.quantity}
+                            onChange={this.handleChange}
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Platform</Form.Label>
+                        <Form.Control
+                            type="input"
+                            name='platform'
+                            label='Platform'
+                            value={this.state.platform}
+                            onChange={this.handleChange}
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Operated at</Form.Label>
+                        <Form.Control
+                            type="date"
+                            name='operated_at'
+                            value={this.state.operated_at}
+                            onChange={this.handleChange}
+                        />
+                    </Form.Group>
+                </Card.Body>
+                <Card.Footer>
                     <div className="d-flex">
-                      <Button type="button" id="cncButton">Cancel</Button>
-                      <Button type="button" id="svButton" icon="check" color="primary" className="ml-auto">
-                        Save
-                      </Button>
+                        <Button type="button" id="cncButton" variant="default">Cancel</Button>
+                        <Button type="button" id="svButton" variant="primary" className="ml-auto">
+                            Save
+                        </Button>
                     </div>
-                  </Card.Footer>
-                }
-            >
-              <Form.Select
-                  className="mb-3"
-                  name='item_id'
-                  label='Item'
-                  onChange={this.handleChange}
-                  value={this.state.item_id}>
-                {this.assetsItems(this.state.items)}
-              </Form.Select>
-                <Form.Select
-                    className="mb-3"
-                    name='operations_type'
-                    label='Type'
-                    onChange={this.handleChange}
-                    value={this.state.item_id}
-                >
-                    <option value="Sell">Sell</option>
-                    <option value="Buy">Buy</option>
-                </Form.Select>
-              <Form.Group label='Tax'>
-              <Form.InputGroup>
-                <Form.InputGroupPrepend>
-                  <Form.InputGroupText>
-                    $
-                  </Form.InputGroupText>
-                </Form.InputGroupPrepend>
-                <Form.Input
-                  name='tax'
-                  value={this.state.tax}
-                  onChange={this.handleChange}
-                />
-                <Form.InputGroupAppend>
-                  <Form.InputGroupText>
-                    .00
-                  </Form.InputGroupText>
-                </Form.InputGroupAppend>
-              </Form.InputGroup>
-              </Form.Group>
-              <Form.Group label='Price'>
-              <Form.InputGroup>
-                <Form.InputGroupPrepend>
-                  <Form.InputGroupText>
-                    $
-                  </Form.InputGroupText>
-                </Form.InputGroupPrepend>
-                <Form.Input
-                    name='price'
-                    value={this.state.price}
-                    onChange={this.handleChange}
-                />
-                <Form.InputGroupAppend>
-                  <Form.InputGroupText>
-                    .00
-                  </Form.InputGroupText>
-                </Form.InputGroupAppend>
-              </Form.InputGroup>
-              </Form.Group>
-              <Form.Input
-                  name='quantity'
-                  label='Quantity'
-                  type="number"
-                  min="1"
-                  value={this.state.quantity}
-                  onChange={this.handleChange}
-              />
-              <Form.Input
-                  name='platform'
-                  label='Platform'
-                  value={this.state.platform}
-                  onChange={this.handleChange}
-              />
-              <Form.Group label='Operated at'>
-              <Form.DatePicker
-                  name='operated_at'
-                  value={this.state.operated_at}
-                  onChange={this.handleChange}
-                  defaultDate={new Date("2021-02-11T22:55:22.889Z")}
-                  format="mm/dd/yyyy"
-                  maxYear={2021}
-                  minYear={1897}
-                  monthLabels={[
-                    'January',
-                    'February',
-                    'March',
-                    'April',
-                    'May',
-                    'June',
-                    'July',
-                    'August',
-                    'September',
-                    'October',
-                    'November',
-                    'December'
-                  ]}
-              />
-              </Form.Group>
-            </Page.Card>
+                </Card.Footer>
+            </Card>
           </Form>
     );
   }

@@ -86,6 +86,7 @@ class Operation extends React.Component {
             { this.state.addForm ?
                 <AddOperation
                 /> : "" }
+            <h1>All</h1>
         </Container>
     );
   }
