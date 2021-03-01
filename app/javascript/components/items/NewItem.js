@@ -1,6 +1,5 @@
 import React from "react"
-import {Card, Page} from "tabler-react";
-import {Button, Form} from "react-bootstrap";
+import {Card, Button, Form} from "react-bootstrap";
 class NewItem extends React.Component {
   constructor() {
     super();
