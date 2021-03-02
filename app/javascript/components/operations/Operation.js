@@ -1,7 +1,8 @@
 import React from "react"
-import {Page, Card, Table, Grid, Button} from "tabler-react";
+import { Table, Container, Card, Button } from "react-bootstrap";
 import ListOperation from "../ListOperation";
 import AddOperation from "./AddOperation";
+import {FiPlus} from "react-icons/fi";
 class Operation extends React.Component {
     constructor() {
         super();
@@ -48,43 +49,45 @@ class Operation extends React.Component {
             'Platform',
             '']
         return (
-            items.map(cat => <Table.ColHeader>{cat}</Table.ColHeader>)
+            items.map(cat => <th>{cat}</th>)
         )
     }
 
   render () {
       console.log(this.state.data)
     return (
-      <React.Fragment>
-        <Page.Content>
+        <Container>
+            <Card>
+                <Card.Header className="bg-white">Operations</Card.Header>
+                <Card.Body>
+                    <div className="col-12">
+                        <Card>
+                            <Table>
+                                <thead>
+                                    <tr>
+                                        {this.operationHeaders()}
+                                    </tr>
+                                </thead>
+                            <tbody>
+                                {this.operationItems(this.state.data)}
+                            </tbody>
+                            </Table>
+                        </Card>
+                    </div>
+                </Card.Body>
+                <Card.Footer className="bg-white">
+                    <div className="d-flex">
+                        <Button id="addButton" color="primary" icon="plus" className="ml-auto" onClick={this.handleNewButton}>
+                            <FiPlus /> { this.state.addForm ? "Close" : "Add New" }
+                        </Button>
+                    </div>
+                </Card.Footer>
+            </Card>
             { this.state.addForm ?
                 <AddOperation
                 /> : "" }
-            <Page.Card
-                header={
-                    <Card.Header>
-                        <Card.Title>Operations</Card.Title>
-                        <Button id="addButton" color="primary" icon="plus" className="ml-auto" onClick={this.handleNewButton}>
-                            { this.state.addForm ? "Close" : "Add New" }
-                        </Button>
-                    </Card.Header>
-                }
-            >
-                <Grid.Col width={12}>
-                    <Card>
-                        <Table>
-                            <Table.Header>
-                                {this.operationHeaders()}
-                            </Table.Header>
-                        <Table.Body>
-                            {this.operationItems(this.state.data)}
-                        </Table.Body>
-                        </Table>
-                    </Card>
-                </Grid.Col>
-            </Page.Card>
-        </Page.Content>
-      </React.Fragment>
+            <h1>All</h1>
+        </Container>
     );
   }
 }

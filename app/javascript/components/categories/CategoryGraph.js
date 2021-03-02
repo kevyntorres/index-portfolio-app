@@ -1,6 +1,5 @@
 import React from "react"
-import PropTypes from "prop-types"
-import { Card, colors } from 'tabler-react'
+import { Card } from 'react-bootstrap'
 import C3Chart from "react-c3js";
 import 'c3/c3.css';
 class CategoryGraph extends React.Component {
@@ -42,10 +41,10 @@ class CategoryGraph extends React.Component {
     colors(){
         let obj = {}
         let i = 4
-        let colors_array = [ colors["blue-lighter"], colors["blue-light"], colors["blue"], colors["blue-darker"] ]
+        let colors_array = [ "#ecf7fe", "#7dc4f6", "#45aaf2", "#3788c2", "#0e2230" ]
         this.state.data.map((cat => {
                 i--
-                i<0 ? i=4 : i
+                i<0 ? i=5 : i
                 return obj[cat.id] = colors_array[i]
             })
         )
@@ -67,7 +66,7 @@ class CategoryGraph extends React.Component {
     return (
       <React.Fragment>
         <Card>
-          <Card.Header>
+          <Card.Header className="bg-white">
             <Card.Title>Categories Goals %</Card.Title>
           </Card.Header>
           <Card.Body>

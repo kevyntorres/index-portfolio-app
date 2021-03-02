@@ -1,45 +1,76 @@
 import React from "react"
-import PropTypes from "prop-types"
-import { Site, Nav } from "tabler-react";
+import { Container, Navbar, Nav } from 'react-bootstrap';
+import { FiHome, FiFolder, FiBook } from "react-icons/fi";
+import { FaFileInvoiceDollar } from "react-icons/fa";
+import { IconContext } from "react-icons";
 
-class Navbar extends React.Component {
+class NavbarComponent extends React.Component {
 
     navItems(items) {
         return (
-            items.map(item => <Nav.Item key={item.name} value={item.name} icon={item.icon} to={item.to}/>)
-        )
-
+            items.map(item => {
+                return(
+                    <IconContext.Provider value={{ className: "navbar-icons" }}>
+                        <Nav.Link key={item.key} href={item.to}>{item.icon} {item.name} </Nav.Link>
+                    </IconContext.Provider>
+                )
+            }))
     }
     render () {
     const itemsMenu = [
         {
+            key: 1,
             name: "Home",
-            icon: "home",
-            to: "/hello"
+            icon: <FiHome />,
+            to: "/"
         },
         {
+            key: 2,
             name: "Categories",
-            icon: "folder",
+            icon: <FiFolder />,
             to: "/categories"
         },
         {
+            key: 3,
             name: "Operations",
-            icon: "refresh-ccw",
+            icon: <FaFileInvoiceDollar />,
             to: "/operations"
         },
         {
+            key: 4,
             name: "Assets",
-            icon: "box",
+            icon: <FiBook />,
             to: "/assets"
         }
     ]
     return (
-      <React.Fragment>
-        <Site.Header imageURL={'/assets/logo.jpeg'} />
-        <Site.Nav items={this.navItems(itemsMenu)}/>
-      </React.Fragment>
+        <>
+            <Navbar bg="white" className="navbar-header">
+                <Container>
+                    <Navbar.Brand href="/">
+                        <img
+                            alt="IndexPortfolioApp"
+                            src="./assets/logo.jpeg"
+                            width="220"
+                            height="65"
+                            className="d-inline-block align-top"
+                        />
+                    </Navbar.Brand>
+                </Container>
+            </Navbar>
+            <Navbar bg="white" className="navbar-header" collapseOnSelect expand="lg" variant="light">
+                <Container>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse id="responsive-navbar-nav">
+                        <Nav className="mr-auto">
+                            {this.navItems(itemsMenu)}
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+        </>
     );
   }
 }
 
-export default Navbar
+export default NavbarComponent

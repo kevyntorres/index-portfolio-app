@@ -3,9 +3,7 @@ import CategoryGraph from "./categories/CategoryGraph";
 class HomePage extends React.Component {
   render () {
     return (
-      <React.Fragment>
         <CategoryGraph />
-      </React.Fragment>
     );
   }
 }

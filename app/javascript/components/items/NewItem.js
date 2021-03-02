@@ -1,5 +1,5 @@
 import React from "react"
-import {Button, Card, Form, Page} from "tabler-react";
+import {Card, Button, Form} from "react-bootstrap";
 class NewItem extends React.Component {
   constructor() {
     super();
@@ -40,59 +40,70 @@ class NewItem extends React.Component {
     return (
         <React.Fragment>
           <Form>
-            <Page.Card
-                title="New Asset"
-                footer={
-                  <Card.Footer>
+            <Card>
+              <Card.Header className="bg-white">New Asset</Card.Header>
+              <Card.Body>
+                <Form.Group>
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                      type="input"
+                      name='name'
+                      placeholder='Enter asset name'
+                      onChange={this.handleChange}
+                      value={this.state.name}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>ISIN</Form.Label>
+                  <Form.Control
+                      type="input"
+                      name='isin'
+                      placeholder='Enter ISIN'
+                      onChange={this.handleChange}
+                      value={this.state.isin}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Price</Form.Label>
+                  <Form.Control
+                      type="input"
+                      name='price'
+                      placeholder='Enter price'
+                      onChange={this.handleChange}
+                      value={this.state.price}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Type</Form.Label>
+                  <Form.Control
+                      type="input"
+                      name='item_type'
+                      placeholder='Enter type'
+                      onChange={this.handleChange}
+                      value={this.state.item_type}
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Category</Form.Label>
+                  <Form.Control
+                      as="select"
+                      name='category_id'
+                      onChange={this.handleChange}
+                      value={this.state.category_id}
+                  >
+                    {this.assetsItems(this.state.categories)}
+                  </Form.Control>
+                </Form.Group>
+              </Card.Body>
+                  <Card.Footer className="bg-white">
                     <div className="d-flex">
-                      <Button type="button" id="cncButton" onClick={this.props.handleNewButton}>Cancel</Button>
-                      <Button type="button" id="svButton" onClick={() => this.props.saveButton(this.state)} icon="check" color="primary" className="ml-auto">
+                      <Button type="button" id="cncButton" variant="default" onClick={this.props.handleNewButton}>Cancel</Button>
+                      <Button type="button" id="svButton" onClick={() => this.props.saveButton(this.state)} variant="primary" className="ml-auto">
                         Save
                       </Button>
                     </div>
                   </Card.Footer>
-                }
-            >
-              <Form.Input
-                  name='name'
-                  label='Name'
-                  placeholder='Enter asset name'
-                  onChange={this.handleChange}
-                  value={this.state.name}
-              />
-              <Form.Input
-                  className="mb-3"
-                  name='isin'
-                  label='ISIN'
-                  placeholder='Enter ISIN'
-                  onChange={this.handleChange}
-                  value={this.state.isin}
-              />
-              <Form.Input
-                  className="mb-3"
-                  name='price'
-                  label='Price'
-                  placeholder='Enter price'
-                  onChange={this.handleChange}
-                  value={this.state.price}
-              />
-              <Form.Input
-                  className="mb-3"
-                  name='item_type'
-                  label='Type'
-                  placeholder='Enter type'
-                  onChange={this.handleChange}
-                  value={this.state.item_type}
-              />
-              <Form.Select
-                className="mb-3"
-                name='category_id'
-                label='Category'
-                onChange={this.handleChange}
-                value={this.state.category_id}>
-                  {this.assetsItems(this.state.categories)}
-              </Form.Select>
-            </Page.Card>
+            </Card>
           </Form>
         </React.Fragment>
     );

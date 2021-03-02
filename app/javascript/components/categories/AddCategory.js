@@ -1,6 +1,5 @@
 import React from "react"
-import PropTypes from "prop-types"
-import { Page, Card, Form, Button } from "tabler-react"
+import { Form, Button, Card } from "react-bootstrap"
 class AddCategory extends React.Component {
     constructor() {
         super();
@@ -20,44 +19,44 @@ class AddCategory extends React.Component {
 
   render () {
     return (
-      <React.Fragment>
-            <Form>
-                <Page.Card
-                    title="New Category"
-                    footer={
-                        <Card.Footer>
-                            <div className="d-flex">
-                                <Button type="button" id="cncButton" onClick={this.props.handleNewButton}>Cancel</Button>
-                                <Button type="button" id="svButton" onClick={() => this.props.saveButton(this.state)} icon="check" color="primary" className="ml-auto">
-                                    Save
-                                </Button>
-                            </div>
-                        </Card.Footer>
-                    }
-                >
-                  <Form.Input
-                      name='name'
-                      label='Name'
-                      placeholder='Enter category name'
-                      value={this.state.name}
-                      onChange={this.handleChange}
-                  />
-                  <Form.Input
-                      className="mb-3"
-                      icon="percent"
-                      type="number"
-                      name='goal'
-                      label='Goal'
-                      min="0"
-                      max="100"
-                      value={this.state.goal}
-                      onChange={this.handleChange}
-                      placeholder='Enter category goal %'
-                      position="append"
-                  />
-                </Page.Card>
-            </Form>
-      </React.Fragment>
+        <Form>
+            <Card>
+                <Card.Header className="bg-white">New Category </Card.Header>
+                <Card.Body>
+                    <Form.Group>
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control
+                            name="name"
+                            type="input"
+                            value={this.state.name}
+                            onChange={this.handleChange}
+                        />
+
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Goal</Form.Label>
+                        <Form.Control
+                            className="mb-3"
+                            type="number"
+                            name='goal'
+                            min="0"
+                            max="100"
+                            value={this.state.goal}
+                            onChange={this.handleChange}
+                            placeholder='Enter category goal %'
+                        />
+                    </Form.Group>
+                </Card.Body>
+                <Card.Footer className="bg-white">
+                    <div className="d-flex">
+                        <Button type="button" id="cncButton" variant="default" onClick={this.props.handleNewButton}>Cancel</Button>
+                        <Button type="button" id="svButton" onClick={() => this.props.saveButton(this.state)} icon="check" variant="primary" className="ml-auto">
+                            Save
+                        </Button>
+                    </div>
+                </Card.Footer>
+            </Card>
+        </Form>
     );
   }
 }

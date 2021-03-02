@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 class ViewItem extends React.Component {
   render () {
     return (

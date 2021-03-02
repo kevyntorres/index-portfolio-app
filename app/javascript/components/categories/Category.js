@@ -1,5 +1,6 @@
 import React from "react"
-import {Page, Button, Card, Form, Nav, Grid} from "tabler-react"
+import {Container, Card, CardGroup, Button, ProgressBar} from "react-bootstrap"
+import { FiPlus } from "react-icons/fi";
 import CategoryView from "./CategoryView";
 import AddCategory from "./AddCategory";
 class Category extends React.Component {
@@ -58,6 +59,10 @@ class Category extends React.Component {
             }
         }
 
+        totalGoals(data){
+            return data.map(cat => cat.id !== 0 ? cat.goal: 0).reduce((a,b) => a+b, 0)
+        }
+
     saveButtonMethod({name, goal}){
         const newCategory = {
             name: name,
@@ -94,33 +99,35 @@ class Category extends React.Component {
     }
 
     render (){
+        let total = this.totalGoals(this.state.data)
         return (
-          <React.Fragment>
-            <Page.Content>
-                <Page.Card
-                    title="Categories"
-                    footer={
-                        <Card.Footer>
-                            <div className="d-flex">
-                                <Button id="addButton" color="primary" icon="plus" className="ml-auto" onClick={this.handleNewButton}>
-                                    { this.state.addForm ? "Close" : "Add New" }
-                                </Button>
-                            </div>
-                        </Card.Footer>
-                    }
-                >
-                    <Grid.Row cards={true}>
-                    { this.categoryItems(this.state.data)}
-                    </Grid.Row>
-                </Page.Card>
+            <Container>
+                <Card>
+                    <Card.Header className="bg-white">
+                        Categories
+                    </Card.Header>
+                    <Card.Body>
+                        <CardGroup>
+                            { this.categoryItems(this.state.data) }
+                        </CardGroup>
+                        <ProgressBar className="my-3 mx-3" striped now={total} label={`${total}%`} />
+                    </Card.Body>
+                    <Card.Footer className="bg-white">
+                        <div className="d-flex">
+                            <Button id="addButton" variant="primary" className="ml-auto" onClick={this.handleNewButton}>
+                                <FiPlus /> { this.state.addForm ? "Close" : "Add New" }
+                            </Button>
+                        </div>
+                    </Card.Footer>
+                </Card>
                 { this.state.addForm ?
                     <AddCategory
                         saveButton={this.saveButtonMethod}
                         handleNewButton={this.handleNewButton}
-                    /> : "" }
-            </Page.Content>
-          </React.Fragment>
-        );
+                    /> : ""
+                }
+            </Container>
+        )
      }
 }
 

@@ -14,7 +14,62 @@
  *= require_self
  */
 
-@import "bootstrap";
+:root {
+  --blue: #467fcf;
+  --indigo: #6574cd;
+  --purple: #a55eea;
+  --pink: #f66d9b;
+  --red: #cd201f;
+  --orange: #fd9644;
+  --yellow: #f1c40f;
+  --green: #5eba00;
+  --teal: #2bcbba;
+  --cyan: #17a2b8;
+  --white: #fff;
+  --gray: #868e96;
+  --gray-dark: #343a40;
+  --azure: #45aaf2;
+  --lime: #7bd235;
+  --primary: #467fcf;
+  --secondary: #868e96;
+  --success: #5eba00;
+  --info: #45aaf2;
+  --warning: #f1c40f;
+  --danger: #cd201f;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1280px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-family-monospace: Monaco, Consolas, "Liberation Mono", "Courier New",
+  monospace;
+}
+
+html {
+  font-family: sans-serif !important;
+  line-height: 1.15 !important;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 0.9375rem !important;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  text-align: left;
+  background-color: #f5f7fb !important;
+}
 
 .x {
   position: absolute !important;
@@ -22,3 +77,37 @@
   right: 0 !important;
 
 }
+
+.navbar-header {
+  border-bottom: 1px solid rgba(0,40,100,.12);
+}
+
+.navbar-icons {
+  vertical-align: text-top
+}
+
+.footer {
+  border-top: 1px solid rgba(0,40,100,.12);
+  color: #9aa0ac;
+  font-size: .875rem;
+  padding: 1.25rem 0
+}
+
+.card-table {
+  margin-bottom: 0 !important;
+}
+
+$primary: #467fcf;
+$secondary: #868e96;
+$success: #5eba00;
+$info: #45aaf2;
+$warning: #f1c40f;
+$danger: #cd201f;
+$light: #f8f9fa;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI",
+Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+"Segoe UI Emoji", "Segoe UI Symbol";
+$font-family-monospace: Monaco, Consolas, "Liberation Mono", "Courier New",
+monospace;
+
+@import "bootstrap";

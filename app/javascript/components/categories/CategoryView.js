@@ -1,25 +1,24 @@
 import React from "react"
-import PropTypes from "prop-types"
-import {Table, Badge, Grid, Card, Button} from "tabler-react"
+import {Table, Card, Button} from "react-bootstrap"
 class CategoryView extends React.Component {
   render () {
       if (this.props.data.name && this.props.data.id !== 0) {
           return (
-              <Grid.Col sm={6} lg={4}>
-                <Card>
-                  <Table cards>
-                      <Table.Body>
-                          <Table.Row>
-                              <Table.Col>{this.props.data.name}</Table.Col>
-                              <Table.Col alignContent="right">
-                                  <Badge color="default">{this.props.data.goal}%</Badge>
-                              </Table.Col>
-                          </Table.Row>
-                      </Table.Body>
-                      </Table>
-                    <Button size="sm" className='x' color="danger" onClick={()=>this.props.deleteCategory(this.props.data.id)} />
+              <div className="col-sm-6 col-lg-4">
+                <Card className="mb-3">
+                  <Table className="card-table">
+                      <tbody>
+                          <tr>
+                              <td>{this.props.data.name}</td>
+                              <td className="text-right">
+                                  <span className="badge badge-default">{this.props.data.goal}%</span>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </Table>
+                <Button size="sm" className='x' variant="danger" onClick={()=>this.props.deleteCategory(this.props.data.id)} />
                 </Card>
-              </Grid.Col>
+              </div>
           )
       }
           else {
