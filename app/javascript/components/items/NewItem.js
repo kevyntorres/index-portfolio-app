@@ -40,7 +40,7 @@ class NewItem extends React.Component {
     return (
         <React.Fragment>
           <Form>
-            <Card>
+            <Card className="mt-4">
               <Card.Header className="bg-white">New Asset</Card.Header>
               <Card.Body>
                 <Form.Group>

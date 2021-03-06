@@ -20,7 +20,7 @@ class AddCategory extends React.Component {
   render () {
     return (
         <Form>
-            <Card>
+            <Card className="mt-4">
                 <Card.Header className="bg-white">New Category </Card.Header>
                 <Card.Body>
                     <Form.Group>
