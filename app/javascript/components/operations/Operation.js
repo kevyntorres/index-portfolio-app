@@ -11,8 +11,7 @@ class Operation extends React.Component {
             addForm: false
         }
         this.handleNewButton = this.handleNewButton.bind(this)
-        // this.saveButtonMethod = this.saveButtonMethod.bind(this)
-        // this.deleteCategory = this.deleteCategory.bind(this)
+        this.saveButtonMethod = this.saveButtonMethod.bind(this)
     }
 
     componentDidMount(){
@@ -31,6 +30,46 @@ class Operation extends React.Component {
                 addForm: !prevState.addForm
             }
         })
+    }
+
+    saveButtonMethod({item_id, operations_type, tax, quantity, price, platform, operated_at}){
+        const newItem = {
+            item_id: parseInt(item_id),
+            type: operations_type,
+            tax: tax,
+            quantity: quantity,
+            price: price,
+            platform: platform,
+            operated_at: operated_at,
+        }
+
+        fetch('/v1/operations', {
+            method: 'POST',
+            body: JSON.stringify(newItem),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Something went wrong');
+                }
+            })
+            .then(data => {
+                this.setState((prevState) => {
+                    let old_data = prevState.data
+                    old_data.push(data)
+                    return {
+                        data: old_data
+                    }
+                })
+            })
+            .catch(error => {
+                alert(error);
+            })
+        this.handleNewButton()
     }
 
     operationItems(items) {
@@ -54,7 +93,6 @@ class Operation extends React.Component {
     }
 
   render () {
-      console.log(this.state.data)
     return (
         <Container>
             <Card>
@@ -85,6 +123,8 @@ class Operation extends React.Component {
             </Card>
             { this.state.addForm ?
                 <AddOperation
+                    saveButton={this.saveButtonMethod}
+                    handleNewButton={this.handleNewButton}
                 /> : "" }
             <h1>All</h1>
         </Container>

@@ -5,7 +5,7 @@ class AddOperation extends React.Component {
     super();
     this.state = {
       item_id: null,
-        operations_type: "",
+      operations_type: "",
       tax: null,
       quantity: null,
       price: null,
@@ -121,8 +121,8 @@ class AddOperation extends React.Component {
                 </Card.Body>
                 <Card.Footer>
                     <div className="d-flex">
-                        <Button type="button" id="cncButton" variant="default">Cancel</Button>
-                        <Button type="button" id="svButton" variant="primary" className="ml-auto">
+                        <Button type="button" id="cncButton" variant="default" onClick={this.props.handleNewButton}>Cancel</Button>
+                        <Button type="button" id="svButton" onClick={() => this.props.saveButton(this.state)} icon="check" variant="primary" className="ml-auto">
                             Save
                         </Button>
                     </div>
