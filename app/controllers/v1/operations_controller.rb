@@ -26,15 +26,10 @@ class V1::OperationsController < ApplicationController
   # POST /operations.json
   def create
     @operation = Operation.new(operation_params)
-
-    respond_to do |format|
-      if @operation.save
-        format.html { redirect_to @operation, notice: 'Operation was successfully created.' }
-        format.json { render :show, status: :created, location: @operation }
-      else
-        format.html { render :new }
-        format.json { render json: @operation.errors, status: :unprocessable_entity }
-      end
+    if @operation.save
+      render json: @operation
+    else
+      render json: @operation.errors, status: :unprocessable_entity
     end
   end
 
@@ -64,12 +59,12 @@ class V1::OperationsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_operation
-      @operation = Operation.find(params[:id])
-    end
+  def set_operation
+    @operation = Operation.find(params[:id])
+  end
 
     # Only allow a list of trusted parameters through.
-    def operation_params
-      params.require(:operation).permit(:asset_id, :type, :tax, :quantity, :price, :platform, :operated_at)
-    end
+  def operation_params
+    params.permit(:item_id, :operations_type, :tax, :quantity, :price, :platform, :operated_at)
+  end
 end
