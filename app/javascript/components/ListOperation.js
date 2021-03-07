@@ -27,6 +27,12 @@ class ListOperation extends React.Component {
               </td>
               <td className="d-none d-md-table-cell text-nowrap">
                   <Button size="sm" variant="outline-primary">Edit</Button>
+                  <Button
+                      size="sm"
+                      variant="outline-danger"
+                      onClick={()=>this.props.deleteItem(this.props.data.id)}
+                  >Delete
+                  </Button>
               </td>
             </tr>
     )

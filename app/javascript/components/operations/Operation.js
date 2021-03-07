@@ -74,9 +74,31 @@ class Operation extends React.Component {
 
     operationItems(items) {
         return (
-            items.map(cat=> <ListOperation key={cat.id} data={cat} />)
+            items.map(cat=> <ListOperation key={cat.id} data={cat} deleteItem={this.deleteOperation} />)
         )
     }
+
+    deleteOperation(id){
+        let result = confirm("Want to delete?");
+        if (result) {
+            fetch(`/v1/operations/${id}`, {
+                method: 'DELETE'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        this.setState((prevState) => {
+                            let data = prevState.data.filter((cat)=>cat.id !== id)
+                            return {
+                                data: data
+                            }
+                        })
+                    } else {
+                        throw new Error('Something went wrong');
+                    }
+                })
+        }
+    }
+
     operationHeaders() {
         let items = [
             'ID',
